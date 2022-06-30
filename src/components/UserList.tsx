@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { IUser } from '../types/types';
+import UserItem from './UserItem';
 
 interface UserListProps {
    users: IUser[];
@@ -9,12 +10,10 @@ const UserList: FC<UserListProps> = ({ users }) => {
    return (
       <div>
          {users.map((user) => (
-            <div
-               key={user.id}
-               style={{ padding: 15, border: '1px solid #eee' }}
-            >
-               {user.id}.{user.name} Проживает в городе{user.address.city} по
-               улице {user.address.street}
+            <div>
+               {users.map((user) => (
+                  <UserItem key={user.id} user={user} />
+               ))}
             </div>
          ))}
       </div>
